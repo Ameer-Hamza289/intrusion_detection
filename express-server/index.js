@@ -14,10 +14,7 @@ app.use(bodyParser.urlencoded({ extended: true, limit: '50mb' }));
 // MongoDB connection
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/ids_insights';
 
-mongoose.connect(MONGODB_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-})
+mongoose.connect(MONGODB_URI)
 .then(() => {
     console.log('✅ Connected to MongoDB');
     console.log('mongodb connected successfully');
