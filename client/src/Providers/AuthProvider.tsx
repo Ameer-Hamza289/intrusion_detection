@@ -9,6 +9,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const navigate = useNavigate();
 
   const login = async (username: string, password: string) => {
+    console.log(username, password);
     // For demo purposes, bypass authentication
     // In production, implement actual API call here:
     // const response = await api.post('/auth/login', { username, password });
