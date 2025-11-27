@@ -1,6 +1,5 @@
 import { useState, type ReactNode } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { login as apiLogin } from '../services/api';
 import { AuthContext } from '../context/AuthContext';
 
 export function AuthProvider({ children }: { children: ReactNode }) {
@@ -10,13 +9,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const navigate = useNavigate();
 
   const login = async (username: string, password: string) => {
-    // try {
-      const response = await apiLogin(username, password);
-      localStorage.setItem('token', response.token);
-      setIsAuthenticated(true);
-    // } catch (error) {
-    //   throw error;
-    // }
+    // For demo purposes, bypass authentication
+    // In production, implement actual API call here:
+    // const response = await api.post('/auth/login', { username, password });
+    // localStorage.setItem('token', response.data.token);
+    localStorage.setItem('token', 'demo-token');
+    setIsAuthenticated(true);
   };
 
   const logout = () => {

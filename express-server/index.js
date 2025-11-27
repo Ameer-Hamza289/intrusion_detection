@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
+const axios = require('axios');
 require("dotenv").config();
 
 // Middleware setup
@@ -48,6 +49,27 @@ const Insight = mongoose.model('Insight', insightSchema);
 app.get('/', (req, res) => {
     res.send('Welcome to intrusion detection system!');
 });
+
+app.get("/api/drive-img/:id", async (req, res) => {
+    const fileId = req.params.id;
+
+    const url = `https://drive.google.com/uc?export=download&id=${fileId}`;
+
+    try {
+      const response = await axios.get(url, {
+        responseType: "arraybuffer", // important for binary files
+      });
+
+      // Set the correct headers
+      res.set("Content-Type", response.headers["content-type"]);
+      res.set("Cache-Control", "public, max-age=31536000"); // Optional caching
+
+      res.send(response.data);
+    } catch (err) {
+      console.error("Google Drive proxy error:", err.message);
+      return res.status(500).send("Failed to load Google Drive image");
+    }
+  });
 
 // Get all insights
 app.get('/api/data', async (req, res) => {
