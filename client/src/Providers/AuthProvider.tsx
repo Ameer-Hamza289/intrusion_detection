@@ -9,13 +9,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const navigate = useNavigate();
 
   const login = async (username: string, password: string) => {
-    console.log(username, password);
-    // For demo purposes, bypass authentication
-    // In production, implement actual API call here:
-    // const response = await api.post('/auth/login', { username, password });
-    // localStorage.setItem('token', response.data.token);
-    localStorage.setItem('token', 'demo-token');
+    if(username==="amirkhan1122"&& password==="Admin@123"){
+      localStorage.setItem('token', 'demo-token');
     setIsAuthenticated(true);
+    }
+    return {error:"Invalid credentials"}
+
   };
 
   const logout = () => {
@@ -28,5 +27,4 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     <AuthContext.Provider value={{ isAuthenticated, login, logout }}>
       {children}
     </AuthContext.Provider>
-  );
-}
+  );}
