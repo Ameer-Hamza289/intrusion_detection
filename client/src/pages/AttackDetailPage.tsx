@@ -166,7 +166,7 @@ export function AttackDetailPage() {
               >
                 <div className="aspect-video bg-gray-100 flex items-center justify-center overflow-hidden">
                   <LazyLoadImage
-                    src={`${import.meta.env.VITE_API_URL}/api/drive-img/${fileId}`}
+                    src={`${import.meta.env.VITE_API_URL}/drive-img/${fileId}`}
                     alt={`Chart ${index + 1}`}
                     effect="blur"
                     className="w-full h-full object-contain"
