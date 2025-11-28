@@ -11,12 +11,17 @@ export function LoginPage() {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    setError('');
+
     try {
-      await login(username, password);
-      navigate('/dashboard');
+      const result = await login(username, password);
+      if (result.success) {
+        navigate('/dashboard');
+      }
     } catch (err) {
-        console.error(err);
-      setError('Invalid credentials');
+      console.error(err);
+      const errorMessage = err instanceof Error ? err.message : 'Invalid credentials';
+      setError(errorMessage);
     }
   };
 

@@ -9,12 +9,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const navigate = useNavigate();
 
   const login = async (username: string, password: string) => {
-    if(username==="amirkhan1122"&& password==="Admin@123"){
+    if (username === "amirkhan1122" && password === "Admin@123") {
       localStorage.setItem('token', 'demo-token');
-    setIsAuthenticated(true);
+      setIsAuthenticated(true);
+      return { success: true };
     }
-    return {error:"Invalid credentials"}
-
+    throw new Error("Invalid credentials");
   };
 
   const logout = () => {
