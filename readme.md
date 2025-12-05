@@ -50,19 +50,10 @@ A comprehensive full-stack application for monitoring and analyzing network atta
 - **Type Safety**: TypeScript with strict mode enabled
 
 ### Backend
-- **Framework**: NestJS 11 (Express)
+- **Framework**: Express
 - **Language**: TypeScript 5.x
 - **Database**:
-  - PostgreSQL 16.x for data storage
-  - TypeORM for database management
-- **Authentication**:
-  - JWT (JSON Web Tokens)
-  - Passport.js for authentication strategies
-  - bcrypt for password hashing
-- **Validation**:
-  - class-validator for DTO validation
-  - class-transformer for object transformation
-- **API Documentation**: Swagger/OpenAPI
+  - MongoDB for data storage
 
 ## Project Structure
 
